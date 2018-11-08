@@ -7,6 +7,8 @@ This is a very short and 60 seconds shell script to get started with react-nativ
 react-native init MyApp
 cd MyApp
 
+echo "ios/Pods/" >> .gitignore
+
 tee Gemfile << END
 source "https://rubygems.org"
 
@@ -67,7 +69,7 @@ bundle exec pod install
 
 ruby << END
 require 'xcodeproj'
-project = Xcodeproj::Project.open('ios/MyApp.xcodeproj')
+project = Xcodeproj::Project.open('MyApp.xcodeproj')
 
 project.targets.each do |target|
   target.frameworks_build_phase.files_references.each do |pbx_file_reference|
@@ -83,8 +85,10 @@ project.objects.each do |object|
   if object.respond_to?(:name)
     puts 'object.display_name = ' + object.display_name.to_s
     puts 'object.name = ' + object.name.to_s
-    if object.display_name.end_with?(".xcodeproj", "TestTests", "tvOS.app", "-tvOSTests.xctest", "libReact.a")
+    next if object.display_name.end_with?("MyApp.xcodeproj", "MyAppTests.xcodeproj")
+    if object.display_name.end_with?(".xcodeproj", "tvOS.a", "tvOS" "tvOS.app", "-tvOSTests.xctest", "libReact.a")
       object.remove_from_project
+      puts '^ removed'
     end
   end
 end
