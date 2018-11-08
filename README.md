@@ -2,7 +2,7 @@
 
 ```
 react-native init MyApp
-cd init MyApp
+cd MyApp
 
 tee Gemfile << END
 source "https://rubygems.org"
