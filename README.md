@@ -1,5 +1,8 @@
 ## How to get started with React-Native and cocoapods
 
+This is a very short and 60 seconds shell script to get started with react-native and cocoapods and have it compiling within a minute!
+
+
 ```
 react-native init MyApp
 cd MyApp
