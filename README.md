@@ -30,7 +30,7 @@ platform :ios, '9.0'
 inhibit_all_warnings!
 plugin 'cocoapods-fix-react-native'
 
-target 'MyApp' do
+abstract_target 'App' do
   pod 'yoga', :path => react_native_path + '/ReactCommon/yoga'
 
   # Third party deps
@@ -55,8 +55,11 @@ target 'MyApp' do
     'RCTWebSocket',
     'DevSupport'
   ], path: react_native_path
-  END
+  
+  target 'MyApp'
+  target 'MyAppTests'
 end
+END
 
 bundle install
 cd ios
