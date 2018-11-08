@@ -86,7 +86,7 @@ project.objects.each do |object|
     puts 'object.display_name = ' + object.display_name.to_s
     puts 'object.name = ' + object.name.to_s
     next if object.display_name.end_with?("MyApp.xcodeproj", "MyAppTests.xcodeproj")
-    if object.display_name.end_with?(".xcodeproj", "tvOS.a", "tvOS", "tvOS.app", "-tvOSTests.xctest", "libReact.a")
+    if object.display_name.end_with?(".xcodeproj", "tvOS.a", "tvOS", "tvOS.app", "tvOSTests", "-tvOSTests.xctest", "libReact.a")
       object.remove_from_project
       puts '^ removed'
     end
